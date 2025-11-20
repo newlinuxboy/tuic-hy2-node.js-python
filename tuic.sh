@@ -1,13 +1,13 @@
 #!/bin/bash
 # =========================================
-# TUIC v1.4.5 over QUIC 自动部署脚本（免 root）
+# TUIC v1.6.5 over QUIC 自动部署脚本（免 root）
 # 固定 SNI：www.bing.com，
 # =========================================
 set -euo pipefail
 export LC_ALL=C
 IFS=$'\n\t'
 
-MASQ_DOMAIN="www.bing.com"
+MASQ_DOMAIN="wisp.tom147258.dpdns.org"
 SERVER_TOML="server.toml"
 CERT_PEM="tuic-cert.pem"
 KEY_PEM="tuic-key.pem"
@@ -69,7 +69,7 @@ check_tuic_server() {
     return
   fi
   echo "📥 Downloading tuic-server..."
-  curl -L -o "$TUIC_BIN" "https://github.com/Itsusinn/tuic/releases/download/v1.4.5/tuic-server-x86_64-linux"
+  curl -L -o "$TUIC_BIN" "https://github.com/Itsusinn/tuic/releases/download/v1.6.5/tuic-server-x86_64-linux"
   chmod +x "$TUIC_BIN"
 }
 
@@ -123,7 +123,7 @@ get_server_ip() {
 
 # ========== 生成TUIC链接 ==========
 generate_link() {
-  local ip="$1"
+  local ip="wisp.tom147258.dpdns.org"
   # 节点输出链接
   cat > "$LINK_TXT" <<EOF
 tuic://${TUIC_UUID}:${TUIC_PASSWORD}@${ip}:${TUIC_PORT}?congestion_control=bbr&alpn=h3&allowInsecure=1&sni=${MASQ_DOMAIN}&udp_relay_mode=native&disable_sni=0&reduce_rtt=1&max_udp_relay_packet_size=8192#TUIC-${ip}
@@ -162,3 +162,4 @@ main() {
 }
 
 main "$@"
+
