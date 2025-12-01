@@ -123,7 +123,7 @@ get_server_ip() {
 
 # ========== 生成TUIC链接 ==========
 generate_link() {
-  local ip="wisp.tom147258.dpdns.org"
+  local ip=${MASQ_DOMAIN}
   # 节点输出链接
   cat > "$LINK_TXT" <<EOF
 tuic://${TUIC_UUID}:${TUIC_PASSWORD}@${ip}:${TUIC_PORT}?congestion_control=bbr&alpn=h3&allowInsecure=1&sni=${MASQ_DOMAIN}&udp_relay_mode=native&disable_sni=0&reduce_rtt=1&max_udp_relay_packet_size=8192#TUIC-${ip}
@@ -162,5 +162,6 @@ main() {
 }
 
 main "$@"
+
 
 
