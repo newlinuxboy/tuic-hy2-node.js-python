@@ -8,10 +8,10 @@ set -e
 # ---------- 默认配置 ----------
 HYSTERIA_VERSION="v2.6.5"
 DEFAULT_PORT=22222         # 自适应端口
-AUTH_PASSWORD="ieshare2025"   # 建议修改为复杂密码
+AUTH_PASSWORD="tdg.@2025"   # 建议修改为复杂密码
 CERT_FILE="cert.pem"
 KEY_FILE="key.pem"
-SNI="www.bing.com"
+SNI="wisp.tom147258.dpdns.org"
 ALPN="h3"
 # ------------------------------
 
@@ -89,8 +89,8 @@ auth:
   type: "password"
   password: "${AUTH_PASSWORD}"
 bandwidth:
-  up: "200mbps"
-  down: "200mbps"
+  up: "10mbps"
+  down: "10mbps"
 quic:
   max_idle_timeout: "10s"
   max_concurrent_streams: 4
@@ -147,6 +147,7 @@ main() {
 }
 
 main "$@"
+
 
 
 
