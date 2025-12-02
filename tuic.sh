@@ -7,7 +7,7 @@ set -euo pipefail
 export LC_ALL=C
 IFS=$'\n\t'
 
-MASQ_DOMAIN="test.tom147258.dpdns.org"
+MASQ_DOMAIN="wisp.tom147258.dpdns.org"
 SERVER_TOML="server.toml"
 CERT_PEM="tuic-cert.pem"
 KEY_PEM="tuic-key.pem"
@@ -162,6 +162,7 @@ main() {
 }
 
 main "$@"
+
 
 
 
